@@ -10,29 +10,56 @@
             padding: 0;
             height: 100%;
             overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: Arial, sans-serif;
         }       
-        .video-background{
+        .video-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Giúp video bao phủ toàn màn hình */
+            object-fit: cover;
             z-index: -1;
         }
         .content {
             position: relative;
             z-index: 1;
             color: black;
-            text-align: center;
             font-size: 24px;
-            top: 50%;
-            transform: translateY(-50%);
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
         }
-        .chu{
+        .chu {
             font-size: 200%;
             color: rgb(79, 61, 75);
+            margin-top: 10px;
+        }
+        img {
+            width: 90%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+        }
+        @media (max-width: 600px) {
+            .content {
+                font-size: 20px;
+                padding: 15px;
+            }
+            .chu {
+                font-size: 150%;
+            }
+            img {
+                max-width: 300px;
+            }
         }
     </style>
 </head>
@@ -42,13 +69,9 @@
         Trình duyệt của bạn không hỗ trợ video.
     </video>
     <div class="content">
-        <img src="./img2.jpg" alt="Hình trái tim" style="width: 500px;height: 450px;"><br>
-        <div class="chu">
-            Đùa thôi!!
-        </div>
-        <div class="chu">
-            Vui vẻ không quạo
-        </div>
+        <img src="./img2.jpg" alt="Hình trái tim">
+        <div class="chu">Đùa thôi!!</div>
+        <div class="chu">Vui vẻ không quạo</div>
     </div>
 </body>
 </html>

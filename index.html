@@ -15,7 +15,6 @@
             flex-direction: column;
             text-align: center;
             font-family: Arial, sans-serif;
-            /* overflow: hidden; */
         }
         .video-background {
             position: fixed;
@@ -32,13 +31,15 @@
             color: black;
             font-size: 22px;
             padding: 20px;
+            max-width: 500px;
+            width: 90%;
         }
         h1 {
             margin-bottom: 15px;
             font-size: 26px;
         }
         img {
-            width: 90%;
+            width: 100%;
             max-width: 400px;
             height: auto;
             border-radius: 5px;
@@ -63,19 +64,15 @@
             position: relative;
             transition: transform 0.3s ease-in-out;
         }
-        .static-btn {
-            position: relative;
-        }
         @media (max-width: 600px) {
             .content {
                 font-size: 18px;
-                padding: 10px;
+                padding: 15px;
             }
             h1 {
                 font-size: 22px;
             }
             img {
-                width: 100%;
                 max-width: 300px;
             }
             .btn1 {
@@ -95,7 +92,7 @@
         <h1>Tao có chuyện muốn nói với mày</h1>
         <img src="./Survey/img1.jpg" alt="Hình ảnh">
         <div class="btn">
-            <button class="btn1 static-btn" onclick="goToPage()">Được thôi</button>
+            <button class="btn1" onclick="goToPage()">Được thôi</button>
             <button class="btn1" id="moveBtn">Không thích</button>
         </div>
     </div>
@@ -115,11 +112,11 @@
         } else {
             // Trên máy tính: Nút chạy khi di chuột vào
             let positions = [
-                { x: 300, y: 0 },  
-                { x: 300, y: 150 }, 
-                { x: 0, y: 150 },   
-                { x: -300, y: 150}, 
-                { x: -300, y: 0 },  
+                { x: 250, y: 0 },  
+                { x: 250, y: 120 }, 
+                { x: 0, y: 120 },   
+                { x: -250, y: 120}, 
+                { x: -250, y: 0 },  
                 { x: 0, y: 0 }
             ];
             let index = 0;
