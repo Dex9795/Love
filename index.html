@@ -10,56 +10,74 @@
             padding: 0;
             height: 100%;
             overflow: hidden;
-        }       
-        .video-background{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .video-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Giúp video bao phủ toàn màn hình */
+            object-fit: cover;
             z-index: -1;
         }
         .content {
             position: relative;
             z-index: 1;
             color: black;
-            text-align: center;
-            font-size: 24px;
-            top: 45%;
-            transform: translateY(-50%);
-            text-align: center;
+            font-size: 22px;
+            padding: 20px;
         }
-        h1{
-            text-align: center;
-            margin: 0;
+        h1 {
+            margin-bottom: 15px;
+            font-size: 26px;
         }
-        .btn{
+        img {
+            width: 90%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 5px;
+        }
+        .btn {
             display: flex;
             justify-content: center;
-            text-align: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
-        .btn1{
-            margin: 0px 100px;
-            font-size: 20px;
+        .btn1 {
+            font-size: 18px;
             text-decoration: none;
             color: black;
-            width: 150px;
+            width: 140px;
             height: 50px;
-            position: relative;
             border-radius: 5px;
             background: linear-gradient(to top, #ff99cc 0%, #ffffff 100%);
+            border: none;
+            cursor: pointer;
         }
-        @media (max-width:800px){
-        .content {
-            flex-direction: row;
-            width: calc(50% - 10px);
-        }
-        .content{
-                width: 100%;
-                float: none;
+        @media (max-width: 600px) {
+            .content {
+                font-size: 18px;
+                padding: 10px;
             }
-    }
+            h1 {
+                font-size: 22px;
+            }
+            img {
+                width: 100%;
+                max-width: 300px;
+            }
+            .btn1 {
+                width: 120px;
+                height: 45px;
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -68,40 +86,33 @@
         Trình duyệt của bạn không hỗ trợ video.
     </video>
     <div class="content">
-        <h1>Tao có chuyện muốn nói với mày</h1><br>
-        <img src="./Survey/img1.jpg" width="500px" height="450px" style="border-radius: 5px;"><br><br>
+        <h1>Tao có chuyện muốn nói với mày</h1>
+        <img src="./Survey/img1.jpg" alt="Hình ảnh">
         <div class="btn">
-            <div>
-                <button class="btn1" onclick="goToPage()">Được thôi</button>
-                <script>
-                    function goToPage() {
-                        window.location.href = "Survey/Answer.html"; // Thay link bạn muốn
-                    }
-                </script>
-            </div>
-            <div>
-                <button class="btn1" id="moveBtn">Không thích</button>
-                <script>
-                    function goToPage() {
-                        window.location.href = "Survey/Answer.html"; // Thay link bạn muốn
-                    }
-                    let positions = [
-                        { x: 200, y: 0 },  // Điểm 1 (bên phải)
-                        { x: 200, y: 100 }, // Điểm 2 (xuống dưới)
-                        { x: 0, y: 100 },   // Điểm 3 (sang giữa)
-                        { x: -100, y: 100}, // Điểm 4 (sang trái)
-                        { x: -100, y: 0 },  // Điểm 5 (lên trên)
-                        { x: 0, y: 0 },  // Điểm 5 (sang giữa)
-                    ];
-                    let index = 0;
-                    document.getElementById("moveBtn").addEventListener("mouseenter", function() {
-                        let pos = positions[index];
-                        this.style.transform = `translate(${pos.x}px, ${pos.y}px)`;
-                        index = (index + 1) % positions.length; // Lặp lại vị trí
-                    });
-                </script>
-            </div>
+            <button class="btn1" onclick="goToPage()">Được thôi</button>
+            <button class="btn1" id="moveBtn">Không thích</button>
         </div>
     </div>
+
+    <script>
+        function goToPage() {
+            window.location.href = "Survey/Answer.html";
+        }
+
+        let positions = [
+            { x: 100, y: 0 },  
+            { x: 100, y: 50 }, 
+            { x: 0, y: 50 },   
+            { x: -50, y: 50}, 
+            { x: -50, y: 0 },  
+            { x: 0, y: 0 }
+        ];
+        let index = 0;
+        document.getElementById("moveBtn").addEventListener("mouseenter", function() {
+            let pos = positions[index];
+            this.style.transform = `translate(${pos.x}px, ${pos.y}px)`;
+            index = (index + 1) % positions.length;
+        });
+    </script>
 </body>
 </html>
