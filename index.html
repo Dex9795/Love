@@ -9,13 +9,13 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             text-align: center;
             font-family: Arial, sans-serif;
+            /* overflow: hidden; */
         }
         .video-background {
             position: fixed;
@@ -48,6 +48,7 @@
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
+            position: relative;
         }
         .btn1 {
             font-size: 18px;
@@ -59,6 +60,11 @@
             background: linear-gradient(to top, #ff99cc 0%, #ffffff 100%);
             border: none;
             cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease-in-out;
+        }
+        .static-btn {
+            position: relative;
         }
         @media (max-width: 600px) {
             .content {
@@ -89,7 +95,7 @@
         <h1>Tao có chuyện muốn nói với mày</h1>
         <img src="./Survey/img1.jpg" alt="Hình ảnh">
         <div class="btn">
-            <button class="btn1" onclick="goToPage()">Được thôi</button>
+            <button class="btn1 static-btn" onclick="goToPage()">Được thôi</button>
             <button class="btn1" id="moveBtn">Không thích</button>
         </div>
     </div>
@@ -99,20 +105,30 @@
             window.location.href = "Survey/Answer.html";
         }
 
-        let positions = [
-            { x: 100, y: 0 },  
-            { x: 100, y: 50 }, 
-            { x: 0, y: 50 },   
-            { x: -50, y: 50}, 
-            { x: -50, y: 0 },  
-            { x: 0, y: 0 }
-        ];
-        let index = 0;
-        document.getElementById("moveBtn").addEventListener("mouseenter", function() {
-            let pos = positions[index];
-            this.style.transform = `translate(${pos.x}px, ${pos.y}px)`;
-            index = (index + 1) % positions.length;
-        });
+        const moveBtn = document.getElementById("moveBtn");
+
+        // Kiểm tra nếu là thiết bị di động
+        if (window.innerWidth <= 600) {
+            moveBtn.addEventListener("click", function() {
+                this.style.display = "none"; // Ẩn nút khi bấm vào trên điện thoại
+            });
+        } else {
+            // Trên máy tính: Nút chạy khi di chuột vào
+            let positions = [
+                { x: 300, y: 0 },  
+                { x: 300, y: 150 }, 
+                { x: 0, y: 150 },   
+                { x: -300, y: 150}, 
+                { x: -300, y: 0 },  
+                { x: 0, y: 0 }
+            ];
+            let index = 0;
+            moveBtn.addEventListener("mouseenter", function() {
+                let pos = positions[index];
+                this.style.transform = `translate(${pos.x}px, ${pos.y}px)`;
+                index = (index + 1) % positions.length;
+            });
+        }
     </script>
 </body>
 </html>
